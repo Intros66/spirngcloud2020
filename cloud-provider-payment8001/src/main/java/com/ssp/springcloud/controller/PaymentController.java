@@ -16,7 +16,7 @@ public class PaymentController {
     private PaymentService paymentService;
 
     @PostMapping(value = "/payment/create")
-    public CommonResult<Payment> create(Payment payment){
+    public CommonResult<Payment> create(@RequestBody Payment payment){
 
         int result = paymentService.create(payment);
         log.info("******插入结果：" + result);
@@ -32,7 +32,7 @@ public class PaymentController {
     public CommonResult<Payment> getPaymentById(@PathVariable("id") Long id){
 
         Payment payment = paymentService.getPaymentById(id);
-        log.info("******插入结果：" + payment);
+        log.info("******查询结果：" + payment);
 
         if (payment != null){
             return new CommonResult(200,"查询数据库成功",payment);
