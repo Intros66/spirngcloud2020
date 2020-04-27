@@ -42,7 +42,6 @@ public class PaymentController {
     public CommonResult<Payment> getPaymentById(@PathVariable("id") Long id){
 
         Payment payment = paymentService.getPaymentById(id);
-        log.info("******查询结果：" + payment);
 
         if (payment != null){
             return new CommonResult(200,"查询数据库成功,serverPort:" + serverPort,payment);
@@ -50,15 +49,15 @@ public class PaymentController {
             return new CommonResult(444,"没有对应记录",null);
         }
     }
-    
-    @GetMapping(value = "payment/discovery")
+
+    @GetMapping("/payment/discovery")
     public Object discovery(){
-        ////得到所有的微服务列表
+        //得到所有的微服务列表
         List<String> services = discoveryClient.getServices();
         for (String element : services) {
-            log.info("****element****" + element);
+            log.info("****element***" + element);
         }
-        //指定微服务名称下的所有实例
+        //得到指定微服务名称下所有的实例
         List<ServiceInstance> instances = discoveryClient.getInstances("CLOUD-PAYMENT-SERVICE");
         for (ServiceInstance instance : instances) {
             log.info(instance.getServiceId()+"\t"+instance.getHost()+"\t"+instance.getPort()+"\t"+instance.getUri());

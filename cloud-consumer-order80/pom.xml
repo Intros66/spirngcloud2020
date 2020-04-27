@@ -12,7 +12,11 @@
     <artifactId>cloud-consumer-order80</artifactId>
 
     <dependencies>
-
+        <!--eureka-client-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
         <!--引入自己定义的API通用包，可以使用Payment支付Entity-->
         <dependency>
             <groupId>com.ssp.springcloud</groupId>
