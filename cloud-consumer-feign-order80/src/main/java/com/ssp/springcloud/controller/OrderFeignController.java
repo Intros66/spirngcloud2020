@@ -1,6 +1,6 @@
-package com.ssp.cloud.controller;
+package com.ssp.springcloud.controller;
 
-import com.ssp.cloud.service.PaymentFeignService;
+import com.ssp.springcloud.service.PaymentFeignService;
 import com.ssp.springcloud.entities.CommonResult;
 import com.ssp.springcloud.entities.Payment;
 import lombok.extern.slf4j.Slf4j;
@@ -20,5 +20,12 @@ public class OrderFeignController {
     @GetMapping(value = "/consumer/payment/get/{id}")
     public CommonResult<Payment> getPaymentById(@PathVariable("id") Long id){
         return paymentFeignService.getPaymentById(id);
+    }
+
+    @GetMapping(value = "/consumer/payment/feign/timeout")
+    public String paymentFeignTimeOut(){
+
+        //openfeign-ribbon，客户端一般默认等待1秒钟
+        return paymentFeignService.paymentFeignTimeOut();
     }
 }

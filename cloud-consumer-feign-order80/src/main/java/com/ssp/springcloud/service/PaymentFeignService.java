@@ -1,4 +1,4 @@
-package com.ssp.cloud.service;
+package com.ssp.springcloud.service;
 
 import com.ssp.springcloud.entities.CommonResult;
 import com.ssp.springcloud.entities.Payment;
@@ -12,4 +12,7 @@ public interface PaymentFeignService {
 
     @GetMapping(value = "/payment/get/{id}")
     public CommonResult<Payment> getPaymentById(@PathVariable("id") Long id);
+
+    @GetMapping(value = "/payment/feign/timeout")
+    public String paymentFeignTimeOut();
 }
