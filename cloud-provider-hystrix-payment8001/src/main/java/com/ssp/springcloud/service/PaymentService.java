@@ -16,6 +16,11 @@ public class PaymentService {
             return "线程池： " + Thread.currentThread().getName()+ "paymentInfo_OK,id: " + id + "\t"+ "O(∩_∩)O";
     }
 
+    /**
+     * 超时访问
+     * @param id
+     * @return
+     */
     public String paymentInfo_TimeOut(Integer id){
         int timeNumber = 3;
         try {
@@ -23,6 +28,8 @@ public class PaymentService {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        return "线程池： " + Thread.currentThread().getName()+ "paymentInfo_TimeOut,id: " + id + "\t"+ "┭┮﹏┭┮" + " 耗时(ms)" + timeNumber;
+        return "线程池： " + Thread.currentThread().getName()+ "paymentInfo_TimeOut,id: " + id + "\t"+ "┭┮﹏┭┮" + " 耗时(s)" + timeNumber;
     }
+
+
 }
