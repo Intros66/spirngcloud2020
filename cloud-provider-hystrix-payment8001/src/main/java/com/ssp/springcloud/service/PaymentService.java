@@ -37,7 +37,7 @@ public class PaymentService {
     }
 
     public String paymentInfo_TimeOutHandler(Integer id){
-        return "线程池： " + Thread.currentThread().getName()+ "paymentInfo_TimeOutHandler,id: " + id + "\t"+ "/(ㄒoㄒ)/~~"  ;
+        return "线程池： " + Thread.currentThread().getName()+ "系统繁忙，请稍后再试: " + id + "\t"+ "/(ㄒoㄒ)/~~"  ;
     }
 
 }
