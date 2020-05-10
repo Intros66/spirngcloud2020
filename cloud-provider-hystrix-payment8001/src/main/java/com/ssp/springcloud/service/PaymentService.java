@@ -46,10 +46,10 @@ public class PaymentService {
 
     //服务熔断
     @HystrixCommand(fallbackMethod = "paymentCircuitBreaker_fallback",commandProperties = {
-            @HystrixProperty(name = "circuitBreaker.enable",value = "true"),//是否开启断路器
-            @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold",value = "10"),//请求次数
-            @HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds",value = "1000"),//时间窗口期
-            @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage",value = "60")//失败率达到多少后
+            @HystrixProperty(name = "circuitBreaker.enabled",value = "true"),//打开断路器
+            @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold",value = "10"),//阀值，判断熔断的最少请求数，默认是10；只有在一个统计窗口内处理的请求数量达到这个阈值，才会进行熔断与否的判断
+            @HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds",value = "10000"),//快照时间，默认10秒 10秒以内阀值10以上 成功率60一下会熔断
+            @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage",value = "60")//表示在一个统计窗口内有50%的请求处理失败，会触发熔断
     })
     public String paymentCircuitBreaker(@PathVariable("id") Integer id){
         if (id < 0){
